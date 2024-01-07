@@ -1,0 +1,8 @@
+.link-secondary:hover {
+    color: white !important
+}
+
+.sidebar {
+    position: sticky;
+    top: 110px;
+}
