@@ -1,9 +1,10 @@
 import "./Shared.css";
 import { topPicks } from "./Home";
-import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 
 const MainMenu = () => {
     const mailto = "mailto:example@gmail.com";
@@ -12,30 +13,30 @@ const MainMenu = () => {
             <div className="collapse navbar-collapse">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                        <Link
-                            to="/"
+                        <NavHashLink
+                            to="/#top"
                             className="px-4 nav-link link-secondary"
                             aria-current="page"
                         >
                             Home
-                        </Link>
+                        </NavHashLink>
                     </li>
                     <li className="nav-item">
-                        <Link
-                            to="/allTimeTop"
+                        <NavHashLink
+                            to="/allTimeTop#top"
                             className="px-4 nav-link link-secondary"
                         >
                             Top 10 Movies of All Time
-                        </Link>
+                        </NavHashLink>
                     </li>
                     <li className="nav-item">
-                        <Link
-                            to="/currentTop"
+                        <NavHashLink
+                            to="/currentTop#top"
                             className="px-4 nav-link link-secondary"
                             aria-current="page"
                         >
                             Top 10 Movies of 2023
-                        </Link>
+                        </NavHashLink>
                     </li>
 
                     <li className="nav-item">
@@ -66,7 +67,10 @@ export const MovieComponent = ({
     isDark,
 }) => {
     return (
-        <div className={`w-100 p-3 ${isDark ? "bg-dark" : "bg-secondary"}`}>
+        <div
+            id={getAnchorName(title.substring(3))}
+            className={`w-100 p-3 ${isDark ? "bg-dark" : "bg-secondary"}`}
+        >
             <div className="p-4">
                 <h2>{title}</h2>
                 <div className="d-flex py-2">
@@ -89,6 +93,8 @@ export const MovieComponent = ({
         </div>
     );
 };
+
+export const getAnchorName = (movie) => movie.split(" ")[0]
 
 const TopPicks = () => {
     useGSAP(() => {
@@ -119,7 +125,8 @@ const TopPicks = () => {
                         />
                         <div className="px-2">
                             <h5>{movie.title}</h5>
-                            <Link to="/">Details...</Link>
+                            <p >{`${movie.description.substring(0,50)}...`}</p>
+                            <NavHashLink smooth to={"/#"+getAnchorName(movie.title)}>More...</NavHashLink>
                         </div>
                     </div>
                 );
@@ -136,7 +143,8 @@ const RandomQuote = () => {
         fetch("https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand")
             .then((response) => response.json())
             .then((response) => {
-                let randomElement =response[Math.floor(randomQuoteIndex * response.length)];
+                let randomElement =
+                    response[Math.floor(randomQuoteIndex * response.length)];
                 setRandomQuote(randomElement.content.rendered);
             })
             .catch((error) => console.log(error));
@@ -152,7 +160,7 @@ const RandomQuote = () => {
 
 export const Sidebar = () => {
     return (
-        <div className="sidebar w-50 h-100 mx-2">
+        <div className="sidebar h-100 ml-2 px-2">
             <RandomQuote />
             <hr />
             <TopPicks />

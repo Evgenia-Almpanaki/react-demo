@@ -59,20 +59,20 @@ const Home = () => {
                     <span className="text-center">Speed</span>
                 </div>
                 <div className="d-flex flex-column">
-                    <TaskAltRoundedIcon
-                        src={TaskAltRoundedIcon}
-                        alt="icon"
-                        sx={{ fontSize: 200 }}
-                    />
-                    <span className="text-center">Efficiency</span>
-                </div>
-                <div className="d-flex flex-column">
                     <AdsClickRoundedIcon
                         src={AdsClickRoundedIcon}
                         alt="icon"
                         sx={{ fontSize: 200 }}
                     />
                     <span className="text-center">Accuracy</span>
+                </div>
+                <div className="d-flex flex-column">
+                    <TaskAltRoundedIcon
+                        src={TaskAltRoundedIcon}
+                        alt="icon"
+                        sx={{ fontSize: 200 }}
+                    />
+                    <span className="text-center">Efficiency</span>
                 </div>
             </div>
             <div className="w-100">

@@ -87,7 +87,7 @@ const CurrentTop = () => {
 
     return (
         <>
-            <h1 className="my-2">Top 10 Movies of 2023</h1>
+            <h1 className="my-2 py-2">Top 10 Movies of 2023</h1>
             <div className="d-flex flex-row">
                 <div>
                     {movies.map((movie, index) => (
