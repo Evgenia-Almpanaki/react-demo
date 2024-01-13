@@ -8,6 +8,7 @@ import { NavHashLink } from "react-router-hash-link";
 
 const MainMenu = () => {
     const mailto = "mailto:example@gmail.com";
+
     return (
         <div className="container-fluid">
             <div className="collapse navbar-collapse">
@@ -65,6 +66,13 @@ export const MovieComponent = ({
     releaseDate,
     imdbPage,
     isDark,
+}: {
+    title: string,
+    description: string,
+    poster: string,
+    releaseDate: string,
+    imdbPage: string,
+    isDark: boolean,
 }) => {
     return (
         <div
@@ -94,7 +102,7 @@ export const MovieComponent = ({
     );
 };
 
-export const getAnchorName = (movie) => movie.split(" ")[0]
+export const getAnchorName = (movieName: string) => movieName.split(" ")[0]
 
 const TopPicks = () => {
     useGSAP(() => {
@@ -103,9 +111,9 @@ const TopPicks = () => {
         animatedFrames.forEach((frame) => changeTopPick(tl, frame));
     }, {});
 
-    const changeTopPick = (tl, frame) => {
+    const changeTopPick = (tl: any, frame: Node) => {
         tl.to(frame, { opacity: 0, y: "-=120", delay: 5 });
-        tl.call(() => document.getElementById("topPicks").appendChild(frame));
+        tl.call(() => document.getElementById("topPicks")?.appendChild(frame));
         tl.to(frame, { opacity: 1, y: "+=120", duration: 0 });
     };
 
@@ -125,8 +133,8 @@ const TopPicks = () => {
                         />
                         <div className="px-2">
                             <h5>{movie.title}</h5>
-                            <p >{`${movie.description.substring(0,50)}...`}</p>
-                            <NavHashLink smooth to={"/#"+getAnchorName(movie.title)}>More...</NavHashLink>
+                            <p >{`${movie.description.substring(0, 50)}...`}</p>
+                            <NavHashLink smooth to={"/#" + getAnchorName(movie.title)}>More...</NavHashLink>
                         </div>
                     </div>
                 );

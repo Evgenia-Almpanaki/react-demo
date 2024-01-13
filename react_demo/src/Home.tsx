@@ -1,5 +1,6 @@
 import { MovieComponent } from "./Shared";
 import SpeedRoundedIcon from "@mui/icons-material/SpeedRounded";
+import { Icon } from "@mui/material";
 import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
 import AdsClickRoundedIcon from "@mui/icons-material/AdsClickRounded";
 import "./Home.css";
@@ -46,30 +47,28 @@ export const topPicks = [
         imdbPageURL: "https://www.imdb.com/title/tt0050083",
     },
 ];
+
 const Home = () => {
     return (
         <>
             <div className="home-panel w-100 align-items-center justify-content-evenly d-flex flex-row bg-dark mt-4">
                 <div className="d-flex flex-column">
-                    <SpeedRoundedIcon
-                        src={SpeedRoundedIcon}
-                        alt="icon"
+                    <Icon
+                        component={SpeedRoundedIcon}
                         sx={{ fontSize: 200 }}
                     />
                     <span className="text-center">Speed</span>
                 </div>
                 <div className="d-flex flex-column">
-                    <AdsClickRoundedIcon
-                        src={AdsClickRoundedIcon}
-                        alt="icon"
+                    <Icon
+                        component={AdsClickRoundedIcon}
                         sx={{ fontSize: 200 }}
                     />
                     <span className="text-center">Accuracy</span>
                 </div>
                 <div className="d-flex flex-column">
-                    <TaskAltRoundedIcon
-                        src={TaskAltRoundedIcon}
-                        alt="icon"
+                    <Icon
+                        component={TaskAltRoundedIcon}
                         sx={{ fontSize: 200 }}
                     />
                     <span className="text-center">Efficiency</span>

@@ -102,7 +102,7 @@ const CurrentTop = () => {
                         />
                     ))}
                 </div>
-                <Sidebar/>
+                <Sidebar />
             </div>
         </>
     );

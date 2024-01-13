@@ -1,7 +1,7 @@
 import { MovieComponent, Sidebar } from "./Shared";
 
 const AllTimeTop = () => {
-    
+
     const movies = [
         {
             title: "The Shawshank Redemption",
